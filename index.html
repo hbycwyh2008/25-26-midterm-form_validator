@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Checklist – Form Validator Midterm</title>
+  <style>
+    :root{
+      --bg1:#eef2ff;
+      --bg2:#f8fafc;
+      --card:#ffffff;
+      --primary:#4f46e5;
+      --secondary:#06b6d4;
+      --border:#e5e7eb;
+      --text:#111827;
+      --muted:#6b7280;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color:var(--text);
+      padding:32px 18px;
+    }
+    .page{max-width:920px;margin:0 auto}
+    header{
+      background:linear-gradient(90deg,var(--primary),var(--secondary));
+      color:#fff;
+      padding:22px 22px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    h1{margin:0;font-size:1.8rem}
+    .sub{margin:6px 0 0;opacity:.95;line-height:1.35}
+    .topbar{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:14px;
+      align-items:center;
+    }
+    .pill{
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.25);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.92rem;
+      backdrop-filter: blur(6px);
+    }
+    .btn{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,.35);
+      color:#fff;
+      background: rgba(255,255,255,.14);
+    }
+    .btn:hover{background: rgba(255,255,255,.22);}
+    main{
+      margin-top:18px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .meta{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px 14px;
+      padding:18px 18px 0;
+    }
+    @media (max-width: 720px){ .meta{grid-template-columns: 1fr;} }
+    label{display:block;font-size:.85rem;color:var(--muted);margin:0 0 6px}
+    .in{
+      width:100%;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      outline:none;
+      background:#fff;
+    }
+    .in:focus{border-color:var(--primary); box-shadow: 0 0 0 3px rgba(79,70,229,.18);}
+    .note{
+      margin:16px 18px 0;
+      padding:12px 14px;
+      border-radius:12px;
+      background:#f0f9ff;
+      border:1px solid #bae6fd;
+      color:#075985;
+      line-height:1.45;
+    }
+    .sections{padding:18px}
+    .section{
+      border-top:1px solid var(--border);
+      padding-top:16px;
+      margin-top:16px;
+    }
+    .section:first-child{border-top:none; padding-top:0; margin-top:0;}
+    h2{
+      margin:0 0 10px;
+      font-size:1.05rem;
+      color:var(--primary);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    h2 .tag{
+      font-size:.78rem;
+      font-weight:800;
+      color:#fff;
+      background:linear-gradient(90deg,var(--primary),var(--secondary));
+      padding:4px 10px;
+      border-radius:999px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px 14px;
+    }
+    @media (max-width: 860px){ .grid{grid-template-columns: 1fr;} }
+
+    /* Checkbox rows */
+    .item{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 10px;
+      border:1px solid rgba(229,231,235,.95);
+      border-radius:12px;
+      background:rgba(255,255,255,.75);
+    }
+    .item input{
+      margin-top:2px;
+      width:18px;
+      height:18px;
+      accent-color: var(--primary);
+      flex: 0 0 auto;
+    }
+    .txt b{display:block}
+    .txt small{color:var(--muted);display:block;margin-top:2px;line-height:1.35}
+
+    footer{
+      margin-top:14px;
+      padding:14px 18px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:.9rem;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    code{background:#eef2ff; padding:0.15em 0.35em; border-radius:6px;}
+    @media print{
+      body{background:#fff;padding:0}
+      header{box-shadow:none}
+      main{box-shadow:none}
+      .btn{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Student Checklist – Form Validator Midterm</h1>
+      <p class="sub">HTML &amp; CSS only (no JavaScript). Git &amp; GitHub workflow is graded.</p>
+      <div class="topbar">
+        <span class="pill"><b>Goal:</b> Check every box before submitting</span>
+        <a class="btn" href="midterm_student_checklist_onepage.pdf" target="_blank" rel="noopener">Download PDF (1 page)</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="meta">
+        <div>
+          <label>Student Name</label>
+          <input class="in" type="text" placeholder="Your name" />
+        </div>
+        <div>
+          <label>Class / Period</label>
+          <input class="in" type="text" placeholder="e.g., Period 3" />
+        </div>
+        <div>
+          <label>GitHub Repo Link</label>
+          <input class="in" type="text" placeholder="Paste your repository URL" />
+        </div>
+        <div>
+          <label>Date</label>
+          <input class="in" type="text" placeholder="YYYY-MM-DD" />
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Reminder:</strong> No JavaScript is required. We grade (1 set): Git/GitHub habits, HTML structure, CSS design,
+        and UI preparation for validation (state classes + error message placeholders).
+      </div>
+
+      <div class="sections">
+        <section class="section">
+          <h2><span class="tag">1</span> Git &amp; GitHub</h2>
+          <div class="grid">
+            <label class="item"><input type="checkbox"><span class="txt"><b>Repo created + code pushed</b><small>Your project is on GitHub.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Clean structure</b><small>Repo clearly includes <code>index.html</code> and <code>style.css</code>.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Multiple meaningful commits</b><small>Not one big upload; commits show progress.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Clear commit messages</b><small>Messages describe changes (not “update”).</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>README included</b><small>Short description + how to view the project.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Branch/PR evidence (if assigned)</b><small>Used a feature branch or created a PR with a description.</small></span></label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2><span class="tag">2</span> HTML</h2>
+          <div class="grid">
+            <label class="item"><input type="checkbox"><span class="txt"><b>Valid document setup</b><small>DOCTYPE, <code>lang</code>, charset, viewport, title.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Form wrapped correctly</b><small>Uses a container and a <code>&lt;form&gt;</code> element.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Consistent field structure</b><small>Each input follows the same pattern (e.g., <code>.form-control</code>).</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Required fields included</b><small>Username, Email, Password, Confirm Password.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Labels match inputs</b><small><code>label for</code> matches the correct <code>input id</code>.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Submit button present</b><small>A clear submit button is included.</small></span></label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2><span class="tag">3</span> CSS</h2>
+          <div class="grid">
+            <label class="item"><input type="checkbox"><span class="txt"><b>Centered + readable layout</b><small>Content is centered and easy to read.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Card-style container</b><small>Background, border radius, and/or shadow.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Consistent spacing</b><small>Even margins/padding; nothing crowded.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Inputs styled</b><small>Border, padding, full width, focus state.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Button styled</b><small>Looks clickable and matches the form.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>No “broken CSS” typos</b><small>Selectors and properties spelled correctly.</small></span></label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2><span class="tag">4</span> Validation UI Preparation (No JS)</h2>
+          <div class="grid">
+            <label class="item"><input type="checkbox"><span class="txt"><b>Focus styles exist</b><small>Inputs change appearance on focus.</small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Success state class exists</b><small>Example: <code>.form-control.success input</code></small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Error state class exists</b><small>Example: <code>.form-control.error input</code></small></span></label>
+            <label class="item"><input type="checkbox"><span class="txt"><b>Error message placeholder exists</b><small>Example: <code>&lt;small&gt;</code> under each input.</small></span></label>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        <span><strong>Submit:</strong> GitHub repo link + required files</span>
+        <span><strong>Note:</strong> JavaScript is not required for this midterm</span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
